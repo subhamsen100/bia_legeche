@@ -24,7 +24,7 @@ const config = {
     startTime: '19:00', // 24h, in event.timeZone
     timeZone: 'Asia/Kolkata',
     utcOffset: '+05:30',
-    name: { bn: 'বিবাহ-সংবর্ধনা', en: 'Wedding Reception' },
+    name: { bn: 'বধূবরণ', en: 'Wedding Reception' },
     timeLabel: { bn: 'সন্ধ্যা ৭টা থেকে', en: '7:00 PM onwards' }, // placeholder, editable
   },
 
