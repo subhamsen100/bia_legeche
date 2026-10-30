@@ -121,11 +121,11 @@ export const SceneFinal = memo(function SceneFinal({ onReplay }) {
         <LalPaarFrame>
           <SectionHeading id="final-couple" text={config.copy.sectionHeadings.couple} />
           <div className={styles.couple}>
-            <FamilyCard kind="groom" layout="column" animate={false} bloom={false} headingAs="h3" className={styles.family} />
+            <FamilyCard kind="bride" layout="column" animate={false} bloom={false} headingAs="h3" className={styles.family} />
             <div className={styles.coupleVine} aria-hidden="true">
               <FloralVine orientation="horizontal" draw={false} />
             </div>
-            <FamilyCard kind="bride" layout="column" animate={false} bloom={false} headingAs="h3" className={styles.family} />
+            <FamilyCard kind="groom" layout="column" animate={false} bloom={false} headingAs="h3" className={styles.family} />
           </div>
         </LalPaarFrame>
       </InView>

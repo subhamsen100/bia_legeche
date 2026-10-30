@@ -91,7 +91,7 @@ const config = {
       bn: 'আপনার উপস্থিতিই আমাদের সবচেয়ে বড় উপহার।',
       en: "Your presence is the only gift we'll ask for.",
     },
-    signed: { bn: '— শুভম ও শ্রীরূপা', en: 'Subham & Sreerupa' },
+    signed: { bn: '—  শ্রীরূপা ও শুভম ', en: 'Sreerupa & Subham' },
     scanCaption: { bn: 'স্ক্যান করুন', en: 'Scan for directions' },
     openInMaps: { bn: 'ম্যাপে দেখুন', en: 'Open in Maps' },
     replay: { bn: 'আবার দেখুন', en: 'Replay' },

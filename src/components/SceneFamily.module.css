@@ -32,7 +32,7 @@
   max-width: none;
 }
 
-/* desktop / tablet: groom left, bride right, vine joining the arches */
+/* desktop / tablet: bride left, groom right, vine joining the arches */
 .pair[data-wide='true'] {
   --arch-w: clamp(170px, min(19vw, 34vh), 290px);
   flex-direction: row;
