@@ -11,7 +11,7 @@
 const config = {
   /* ---------- Page meta (index.html mirrors these for OG tags) ---------- */
   meta: {
-    title: 'Subham & Sreerupa | Reception, 23 Nov 2027',
+    title: 'Sreerupa & Subham   | Reception, 23 Nov 2027',
     description: {
       bn: 'শ্রীরূপার বধূবরণে আপনাকে সাদর আমন্ত্রণ, মঙ্গলবার ২৩ নভেম্বর ২০২৭, ঘোষবাড়ি, কেয়াতলা।',
       en: 'You are invited to the wedding reception of Subham & Sreerupa, Tuesday 23 November 2027, Ghoshbari, Keyatala, Kolkata.',
@@ -31,15 +31,6 @@ const config = {
   /* ---------- Couple & families (replace [bracketed] placeholders) ---------- */
   couple: {
     names: { bn: 'শুভম ও শ্রীরূপা', en: 'Subham & Sreerupa' },
-    groom: {
-      firstName: { bn: 'শুভম', en: 'Subham' },
-      fullName: { bn: 'শুভম সেন', en: 'Subham Sen' },
-      photo: '/images/groom.jpg', // optional; a missing file shows a silhouette
-      photoAlt: { bn: '[বর শুভমের ছবি]', en: '[Photo of Subham, the groom]' },
-      relation: { bn: 'পুত্র', en: 'Son' },
-      father: { bn: 'স্বরণ সেন', en: "Swaran Sen" },
-      mother: { bn: 'কৃষ্ণা সেন', en: "Krishna Sen" },
-    },
     bride: {
       firstName: { bn: 'শ্রীরূপা', en: 'Sreerupa' },
       fullName: { bn: 'শ্রীরূপা সরকার', en: 'Sreerupa Sarkar' },
@@ -48,6 +39,15 @@ const config = {
       relation: { bn: 'কন্যা', en: 'Daughter' },
       father: { bn: 'শুভ্রেন্দু সরকার', en: "Subhrendu Sarkar" },
       mother: { bn: 'মালা সরকার', en: "Mala Sarkar" },
+    },
+    groom: {
+      firstName: { bn: 'শুভম', en: 'Subham' },
+      fullName: { bn: 'শুভম সেন', en: 'Subham Sen' },
+      photo: '/images/groom.jpg', // optional; a missing file shows a silhouette
+      photoAlt: { bn: '[বর শুভমের ছবি]', en: '[Photo of Subham, the groom]' },
+      relation: { bn: 'পুত্র', en: 'Son' },
+      father: { bn: 'স্বরণ সেন', en: "Swaran Sen" },
+      mother: { bn: 'কৃষ্ণা সেন', en: "Krishna Sen" },
     },
     // template tokens: {relation} {father} {mother}
     familyLine: {
