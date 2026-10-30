@@ -35,7 +35,9 @@
 
 .kickerSlot {
   display: block;
-  min-height: 4.2rem;
+  /* sized for the event name (layout.eventName) in Both mode: Bengali line + smaller English line */
+  font-size: var(--fs-xl);
+  min-height: 2.6em;
   margin-bottom: clamp(0.4rem, 2vh, 1.4rem);
 }
 
@@ -62,7 +64,6 @@
 
 .kicker {
   display: block;
-  font-size: clamp(0.875rem, 0.8rem + 0.35vw, 1.15rem);
 }
 
 .lotus {

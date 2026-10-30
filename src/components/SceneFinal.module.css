@@ -31,10 +31,6 @@
   max-width: 100%;
 }
 
-.kicker {
-  font-size: var(--fs-base);
-}
-
 .names {
   font-size: clamp(2.3rem, 1.6rem + 3.6vw, 4.4rem);
   font-weight: var(--fw-semibold);

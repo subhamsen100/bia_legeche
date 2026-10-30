@@ -260,7 +260,7 @@ async function walkViewport(vp) {
               const b = r('bride');
               return g && b ? { groomLeft: g.left, brideLeft: b.left, sameRow: Math.abs(g.top - b.top) < 40 } : null;
             });
-            check(pos && pos.groomLeft < pos.brideLeft && pos.sameRow, `${tag} family scene: groom left, bride right on desktop`, pos);
+            check(pos && pos.brideLeft < pos.groomLeft && pos.sameRow, `${tag} family scene: bride left, groom right on desktop`, pos);
           } else {
             const pos = await page.evaluate(() => {
               const r = (k) => document.querySelector(`[data-scene-layer="active"] [data-portrait="${k}"]`)?.getBoundingClientRect();
@@ -268,7 +268,7 @@ async function walkViewport(vp) {
               const b = r('bride');
               return g && b ? { groomTop: Math.round(g.top), brideTop: Math.round(b.top), groomLeft: Math.round(g.left), brideLeft: Math.round(b.left) } : null;
             });
-            soft(pos && pos.groomTop + 20 < pos.brideTop, `${tag} family scene: portraits stacked on mobile (spec)`, pos);
+            soft(pos && pos.brideTop + 20 < pos.groomTop, `${tag} family scene: portraits stacked on mobile (spec)`, pos);
           }
         }
       }

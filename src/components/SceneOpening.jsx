@@ -35,7 +35,7 @@ function SceneOpeningImpl({ durationMs = 10000 }) {
         transition={{ duration: 2.4, ease: EASE }}
       />
       <div className={gate.kickerSlot}>
-        <BilingualText as="h1" text={config.event.name} variant="display" className={`${layout.kicker} ${gate.kicker}`} data-perch="" />
+        <BilingualText as="h1" text={config.event.name} variant="display" className={`${layout.kicker} ${layout.eventName} ${gate.kicker}`} data-perch="" />
       </div>
       <motion.span
         className={`${gate.lotus} ${styles.lotus}`}

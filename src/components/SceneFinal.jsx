@@ -80,7 +80,7 @@ export const SceneFinal = memo(function SceneFinal({ onReplay }) {
     <article className={styles.page} data-scene="final" data-lang-mode={lang}>
       {/* ---------- hero ---------- */}
       <InView as="header" className={styles.hero}>
-        <BilingualText text={config.event.name} variant="display" className={`${layout.kicker} ${styles.kicker}`} />
+        <BilingualText text={config.event.name} variant="display" className={`${layout.kicker} ${layout.eventName}`} />
         <BilingualText as="h1" text={config.couple.names} variant="names" className={styles.names} data-perch="" />
         <span className={styles.heroHeart} aria-hidden="true">
           <KolkaHeart draw={false} bounce size="var(--final-heart)" />

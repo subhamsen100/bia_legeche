@@ -56,6 +56,24 @@
   margin-top: 0;
 }
 
+/* event name (বধূবরণ): the invitation's title, big and bold on every scene that shows it.
+   Pair with .kicker; English stays smaller so "Wedding Reception" fits one line on phones. */
+.eventName {
+  --bt-en-scale: 0.5;
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--maroon);
+}
+
+.eventName :global([lang='en']) {
+  font-size: 0.7em;
+  font-weight: var(--fw-bold);
+}
+
+.eventName[data-lang-mode='both'] :global([lang='en']) {
+  font-size: calc(1.12em * var(--bt-en-scale));
+}
+
 .stack {
   display: flex;
   flex-direction: column;

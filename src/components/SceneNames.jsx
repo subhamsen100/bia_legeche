@@ -56,7 +56,7 @@ function SceneNamesImpl({ durationMs = 10000 }) {
         transition={{ duration: 1, ease: EASE, delay: plan.end + t(0.9) }}
       >
         <GoldRule delay={plan.end + t(0.9)} />
-        <BilingualText text={config.event.name} variant="display" className={`${layout.kicker} ${styles.event}`} />
+        <BilingualText text={config.event.name} variant="display" className={`${layout.kicker} ${layout.eventName}`} />
       </motion.div>
     </section>
   );

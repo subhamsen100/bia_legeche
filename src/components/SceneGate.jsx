@@ -103,7 +103,7 @@ export const SceneGate = memo(function SceneGate({ onOpen }) {
         data-gate-kicker=""
       >
         <Rise className={styles.kickerRise} delay={0.1}>
-          <BilingualText as="span" text={config.event.name} variant="display" className={`${layout.kicker} ${styles.kicker}`} />
+          <BilingualText as="span" text={config.event.name} variant="display" className={`${layout.kicker} ${layout.eventName} ${styles.kicker}`} />
         </Rise>
       </div>
     </div>
