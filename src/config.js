@@ -30,7 +30,7 @@ const config = {
 
   /* ---------- Couple & families (replace [bracketed] placeholders) ---------- */
   couple: {
-    names: { bn: 'শুভম ও শ্রীরূপা', en: 'Subham & Sreerupa' },
+    names: { bn: 'শ্রীরূপা ও শুভম', en: 'Sreerupa & Subham' },
     bride: {
       firstName: { bn: 'শ্রীরূপা', en: 'Sreerupa' },
       fullName: { bn: 'শ্রীরূপা সরকার', en: 'Sreerupa Sarkar' },
@@ -105,7 +105,7 @@ const config = {
       done: { bn: 'আজই সেই আনন্দের সন্ধ্যা!', en: 'The evening is finally here!' },
     },
     sectionHeadings: {
-      couple: { bn: 'বর ও কনে', en: 'The Couple' },
+      couple: { bn: 'কনে ও বর', en: 'The Couple' },
       date: { bn: 'দিনক্ষণ', en: 'Date & Time' },
       venue: { bn: 'অনুষ্ঠানস্থল', en: 'The Venue' },
     },
@@ -144,7 +144,7 @@ const config = {
     },
     // tokens: {day} {month} {year} {weekday}
     markedLabel: {
-      bn: '{day} {month} {year}, {weekday}, বিবাহ-সংবর্ধনা',
+      bn: '{day} {month} {year}, {weekday}, বধূবরণ',
       en: '{day} {month} {year}, {weekday}, reception',
     },
   },
@@ -182,7 +182,7 @@ const config = {
     // combined message = bn + '\n\n' + en
     whatsappText: {
       bn:
-        'আমাদের বিবাহ-সংবর্ধনায় আপনাকে সাদর আমন্ত্রণ জানাই।\n' +
+        'আমাদের বধূবরণে আপনাকে সাদর আমন্ত্রণ জানাই।\n' +
         'দিন: {date}, {time}\n' +
         'স্থান: {venue}, {address}\n' +
         'পথ দেখুন: {mapsUrl}\n' +
