@@ -13,7 +13,7 @@ const config = {
   meta: {
     title: 'Subham & Sreerupa | Reception, 23 Nov 2027',
     description: {
-      bn: 'শুভম ও শ্রীরূপার বিবাহ-সংবর্ধনায় আপনাকে সাদর আমন্ত্রণ, মঙ্গলবার ২৩ নভেম্বর ২০২৭, ঘোষবাড়ি, কেয়াতলা।',
+      bn: 'শ্রীরূপার বধূবরণে আপনাকে সাদর আমন্ত্রণ, মঙ্গলবার ২৩ নভেম্বর ২০২৭, ঘোষবাড়ি, কেয়াতলা।',
       en: 'You are invited to the wedding reception of Subham & Sreerupa, Tuesday 23 November 2027, Ghoshbari, Keyatala, Kolkata.',
     },
   },
