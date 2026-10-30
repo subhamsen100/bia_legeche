@@ -1,0 +1,71 @@
+/* Override hooks for consumers (set on className):
+   --bt-bn-font, --bt-en-font   font stacks (otherwise chosen by variant)
+   --bt-en-scale                English size in Both mode, relative to Bengali (default 0.84 body, 0.72 display, 0.9 caption, 0.95 names)
+   --bt-en-color                English colour in Both mode (default --maroon-300, 5:1 on ivory) */
+
+.root {
+  --_bn-font: var(--font-bn-sans);
+  --_en-font: var(--font-en-display);
+  --_en-scale: 0.84;
+}
+
+.display {
+  --_bn-font: var(--font-bn-serif);
+  --_en-font: var(--font-en-display);
+  --_en-scale: 0.72;
+}
+
+.body {
+  --_bn-font: var(--font-bn-sans);
+  --_en-font: var(--font-en-display);
+}
+
+.caption {
+  --_bn-font: var(--font-bn-sans);
+  --_en-font: var(--font-en-display);
+  --_en-scale: 0.9;
+}
+
+.names {
+  --_bn-font: var(--font-bn-serif);
+  --_en-font: var(--font-en-script);
+  --_en-scale: 0.95;
+}
+
+.bn,
+.en {
+  display: block;
+}
+
+/* [lang] doubles specificity so these beat the global [lang|='bn'] / [lang|='en'] rules */
+.bn[lang] {
+  font-family: var(--bt-bn-font, var(--_bn-font));
+  line-height: var(--lh-bn);
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.en[lang] {
+  font-family: var(--bt-en-font, var(--_en-font));
+  line-height: var(--lh-en);
+}
+
+/* Cormorant reads small; nudge English up a touch when it stands alone */
+.body .en[lang],
+.caption .en[lang] {
+  font-size: 1.08em;
+}
+
+.both .en[lang] {
+  font-size: calc(1em * var(--bt-en-scale, var(--_en-scale)));
+  color: var(--bt-en-color, var(--maroon-300));
+  margin-top: 0.2em;
+}
+
+.names.both .en[lang] {
+  line-height: 1.25;
+}
+
+.line {
+  display: block;
+}

@@ -1,0 +1,133 @@
+/* Gate and opening share these slot sizes so the lotus sits in exactly the
+   same place when the gate hands over to Scene 1. */
+.gate {
+  --gate-lotus: min(54vw, 40vh, 300px);
+  position: relative;
+  z-index: var(--z-stage);
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.surface {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: calc(var(--safe-top) + 64px) 20px calc(var(--safe-bottom) + 32px);
+  overflow: hidden;
+  text-align: center;
+  color: var(--color-text);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.surface:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 3px rgba(var(--marigold-rgb), 0.55);
+  border-radius: 0;
+}
+
+.kickerSlot {
+  display: block;
+  min-height: 4.2rem;
+  margin-bottom: clamp(0.4rem, 2vh, 1.4rem);
+}
+
+/* overlay that carries the kicker over the button's empty slot; taps pass through */
+.kickerLayer {
+  /* same horizontal box as .surface's content (padding-inline 20px), so the
+     kicker centres and wraps exactly as it did inside the button */
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  z-index: 1;
+  pointer-events: none;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.kickerRise {
+  display: block;
+}
+
+.lotusInner {
+  display: block;
+}
+
+.kicker {
+  display: block;
+  font-size: clamp(0.875rem, 0.8rem + 0.35vw, 1.15rem);
+}
+
+.lotus {
+  display: block;
+  --lotus-size: var(--gate-lotus);
+  filter: drop-shadow(0 14px 22px rgba(var(--maroon-rgb), 0.12));
+}
+
+.below {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.6rem, 1.8vh, 1.1rem);
+  min-height: 9.5rem;
+  margin-top: clamp(0.8rem, 2.6vh, 1.8rem);
+}
+
+.prompt {
+  display: block;
+}
+
+.promptText {
+  display: block;
+  color: var(--maroon);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+}
+
+.promptText:global([data-lang-mode='both']) :global([lang='en']) {
+  --bt-en-scale: 0.62;
+  font-style: italic;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.04em;
+}
+
+/* pulsing tap ring */
+.tapHint {
+  position: relative;
+  display: block;
+  width: 14px;
+  height: 14px;
+  margin-top: 0.2rem;
+  border-radius: 50%;
+  background: var(--marigold);
+  box-shadow: 0 0 0 3px var(--ivory-50), 0 0 0 4px rgba(var(--gold-rgb), 0.8);
+}
+
+.tapHint span {
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(var(--gold-rgb), 0.85);
+  animation: gate-ping 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) 1.4s infinite;
+  opacity: 0;
+}
+
+@keyframes gate-ping {
+  0% { opacity: 0.9; transform: scale(0.6); }
+  100% { opacity: 0; transform: scale(2.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tapHint span {
+    animation: none;
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}

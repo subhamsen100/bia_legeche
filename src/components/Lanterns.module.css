@@ -1,0 +1,59 @@
+.layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.glyph {
+  display: block;
+  width: var(--w, 28px);
+  height: auto;
+  aspect-ratio: 32 / 42;
+  overflow: visible;
+}
+
+/* column taller than the box: translateY(-100%) carries the lantern from below
+   the bottom edge to above the top edge */
+.rise {
+  position: absolute;
+  top: -70px;
+  height: calc(100% + 140px);
+  width: var(--w, 28px);
+  display: flex;
+  align-items: flex-end;
+  opacity: var(--o, 1);
+  animation: ln-rise var(--rise, 16s) linear var(--dl, 0s) infinite;
+  will-change: transform;
+}
+
+.bob {
+  display: block;
+  transform-origin: 50% 10%;
+  animation: ln-bob var(--bob, 3s) ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.still {
+  position: absolute;
+  top: var(--sy, 40%);
+  opacity: var(--o, 1);
+}
+
+@keyframes ln-rise {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+
+@keyframes ln-bob {
+  from { transform: translateX(-4px) rotate(-4deg); }
+  to { transform: translateX(4px) rotate(4deg); }
+}

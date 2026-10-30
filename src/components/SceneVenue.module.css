@@ -1,0 +1,211 @@
+.scene {
+  gap: clamp(0.4rem, 1.6vh, 1.2rem);
+  padding-top: calc(var(--safe-top) + 60px);
+  padding-bottom: calc(var(--safe-bottom) + 28px);
+}
+
+.sky {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.8;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 92%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 92%);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.name {
+  font-size: clamp(2.1rem, min(10vw, 7vh), 4.4rem);
+  font-weight: var(--fw-semibold);
+  color: var(--maroon);
+  line-height: 1.2;
+}
+
+.name:global([data-lang-mode='both']) :global([lang='en']) {
+  --bt-en-scale: 0.62;
+  margin-top: -0.15em;
+  letter-spacing: 0.08em;
+  font-variant-caps: all-small-caps;
+}
+
+.localityClip {
+  overflow: hidden;
+}
+
+.localityWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.pin {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  rotate: 45deg;
+  border-radius: 50% 50% 0 50%;
+  background: var(--marigold);
+  box-shadow: 0 0 0 2px rgba(var(--marigold-rgb), 0.25);
+}
+
+.locality {
+  font-size: var(--fs-md);
+  color: var(--maroon-700);
+}
+
+.locality:global([data-lang-mode='both']) {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+.locality:global([data-lang-mode='both']) :global([lang='en']) {
+  margin-top: 0;
+  font-style: italic;
+  --bt-en-scale: 0.92;
+}
+
+.house {
+  width: clamp(170px, min(56vw, 25vh), 300px);
+  aspect-ratio: 260 / 190;
+  flex: none;
+}
+
+.address {
+  font-style: normal;
+  max-width: min(100%, 26rem);
+}
+
+.addressText {
+  --bt-en-scale: 0.94;
+  font-size: var(--fs-sm);
+  color: var(--maroon-900);
+  text-wrap: balance;
+}
+
+.addressText:global([data-lang-mode='both']) :global([lang='en']) {
+  margin-top: 0.35em;
+  color: var(--maroon-700);
+}
+
+.beat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.5rem, 1.8vh, 1rem);
+  width: 100%;
+}
+
+.tagline {
+  font-size: var(--fs-md);
+  color: var(--maroon);
+  font-weight: var(--fw-medium);
+  text-wrap: balance;
+}
+
+.tagline :global([lang='en']) {
+  font-style: italic;
+}
+
+.tagline:global([data-lang-mode='both']) :global([lang='en']) {
+  --bt-en-scale: 0.86;
+  margin-top: 0;
+}
+
+/* ---------- QR + Maps button row ---------- */
+.qrRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.6rem, 2vh, 1.4rem) clamp(1rem, 3vw, 2rem);
+  max-width: 100%;
+}
+
+.qrCell,
+.btnCell {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.caption {
+  --bt-en-scale: 0.95;
+  display: block;
+  line-height: 1.4;
+}
+
+.caption:global([data-lang-mode='both']) :global([lang='en']) {
+  margin-top: 0;
+  color: var(--maroon-700);
+}
+
+.btnText {
+  --bt-en-scale: 0.9;
+  --bt-en-color: var(--ivory-200);
+  display: block;
+  text-align: left;
+}
+
+.btnText:global([data-lang-mode='both']) :global([lang='en']) {
+  margin-top: -0.1em;
+  line-height: 1.2;
+}
+
+/* ---------- mobile beats: keep the QR card compact ---------- */
+.scene[data-layout='beats'] {
+  /* keep the last line clear of the bottom corner garlands */
+  padding-bottom: calc(var(--safe-bottom) + 70px);
+}
+
+.scene[data-beat='2'] .name {
+  font-size: clamp(1.8rem, min(8.4vw, 5.6vh), 3rem);
+}
+
+.scene[data-beat='2'] .beat {
+  gap: clamp(0.4rem, 1.4vh, 0.9rem);
+}
+
+.scene[data-layout='beats'] :global([data-map-qr]) {
+  --map-qr-size: 160px;
+  --map-qr-pad: 20px;
+  gap: 4px;
+}
+
+.scene[data-layout='beats'] .qrRow {
+  flex-direction: column;
+}
+
+/* ---------- desktop: two columns ---------- */
+.wide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  width: 100%;
+  max-width: 68rem;
+}
+
+.colLeft,
+.colRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.5rem, 1.8vh, 1.2rem);
+  min-width: 0;
+}
+
+.wide .house {
+  width: clamp(220px, min(26vw, 34vh), 340px);
+}
+
+.wide .addressText {
+  font-size: var(--fs-base);
+}

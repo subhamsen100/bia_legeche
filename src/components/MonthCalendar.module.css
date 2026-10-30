@@ -1,0 +1,249 @@
+/* Calendar card: rounded, gold hairline, ivory, alpona strip on top, soft shadow.
+   Override from the consumer: --cal-cell-h (row height), --cal-max (card max width). */
+.card {
+  --cal-cell-h: clamp(40px, 5.6vh, 50px);
+  --cal-num: clamp(0.95rem, 0.88rem + 0.3vw, 1.15rem);
+  position: relative;
+  width: 100%;
+  max-width: var(--cal-max, 22.5rem);
+  margin-inline: auto;
+  padding: 0 clamp(8px, 2.4vw, 16px) clamp(8px, 1.4vh, 14px);
+  background:
+    radial-gradient(120% 70% at 50% 0%, rgba(var(--marigold-rgb), 0.08), transparent 70%),
+    var(--ivory-50);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    inset 0 0 0 4px var(--ivory-50),
+    inset 0 0 0 5px rgba(var(--gold-rgb), 0.35),
+    var(--shadow-md);
+  overflow: visible;
+  isolation: isolate;
+}
+
+/* alpona strip hugs the top edge inside the rounded border */
+.card .alpona {
+  height: 13px;
+  margin: 0 calc(clamp(8px, 2.4vw, 16px) * -1);
+  width: auto;
+  border-radius: calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0 0;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: clamp(4px, 0.8vh, 10px) 0 clamp(2px, 0.4vh, 6px);
+}
+
+.headerOrn {
+  flex: 1 1 0;
+  max-width: 3.2rem;
+  height: 7px;
+  background:
+    radial-gradient(circle, var(--gold) 0 2.2px, transparent 2.6px) right center / 7px 7px no-repeat,
+    linear-gradient(90deg, transparent, rgba(var(--gold-rgb), 0.9)) left center / calc(100% - 9px) 1px no-repeat;
+}
+
+.headerOrnR {
+  transform: scaleX(-1);
+}
+
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0 0.4em;
+  font-weight: var(--fw-semibold);
+  font-size: clamp(1rem, 0.92rem + 0.45vw, 1.3rem);
+  color: var(--maroon);
+  line-height: 1.3;
+  text-align: center;
+}
+
+.titleBn[lang] {
+  font-family: var(--font-bn-serif);
+  line-height: var(--lh-bn);
+}
+
+.titleEn[lang] {
+  font-family: var(--font-en-display);
+  font-size: 1.12em;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+}
+
+.titleSep {
+  color: var(--gold);
+  font-family: var(--font-en-display);
+  font-weight: 400;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0 2px;
+}
+
+.weekRow {
+  margin-bottom: 2px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(var(--gold-rgb), 0.45);
+}
+
+.weekday {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+  color: var(--maroon-700);
+  font-size: clamp(0.72rem, 0.68rem + 0.2vw, 0.85rem);
+  text-align: center;
+}
+
+.wdBn[lang] {
+  font-family: var(--font-bn-sans);
+  font-weight: var(--fw-medium);
+  line-height: 1.7;
+  white-space: nowrap;
+}
+
+.wdEn[lang] {
+  font-family: var(--font-en-display);
+  font-weight: var(--fw-semibold);
+  font-size: 1.12em;
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+}
+
+.wdInitial[lang] {
+  font-family: var(--font-en-display);
+  font-weight: var(--fw-semibold);
+  font-size: 0.82em;
+  line-height: 1;
+  color: var(--maroon-300);
+  margin-top: -0.25em;
+}
+
+.cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  height: var(--cal-cell-h);
+  color: var(--maroon-muted);
+  font-size: var(--cal-num);
+  overflow: visible;
+}
+
+.num {
+  display: block;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.num[lang='bn'] {
+  font-family: var(--font-bn-serif);
+  line-height: 1.7;
+}
+
+.num[lang='en'] {
+  font-family: var(--font-en-display);
+  font-weight: var(--fw-semibold);
+  font-size: 1.1em;
+  line-height: 1.45;
+}
+
+/* ---------- the marked date ---------- */
+.marked {
+  z-index: 2;
+  color: var(--ivory);
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.marked:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.marked:focus-visible .disc {
+  box-shadow:
+    0 0 0 2px var(--ivory-50),
+    0 0 0 4px var(--color-focus),
+    0 0 14px rgba(var(--maroon-rgb), 0.45);
+}
+
+/* soft maroon glow disc sitting INSIDE the heart, so both heart strokes read on ivory */
+.disc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  --disc: min(calc(var(--cal-cell-h) * 0.8), calc(var(--cal-heart, 62px) * 0.54));
+  width: var(--disc);
+  height: var(--disc);
+  margin: calc(var(--disc) / -2) 0 0 calc(var(--disc) / -2);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.22), transparent 55%),
+    radial-gradient(circle at 50% 45%, #93303D 0%, var(--maroon) 62%, var(--maroon-700) 100%);
+  box-shadow:
+    0 0 0 1px rgba(var(--marigold-rgb), 0.55),
+    0 0 10px 1px rgba(var(--maroon-rgb), 0.35),
+    0 0 18px 4px rgba(var(--marigold-rgb), 0.18);
+  transform: translateY(-1px);
+}
+
+.markedNums {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  color: var(--ivory);
+  text-shadow: 0 1px 1px rgba(78, 18, 27, 0.6);
+  transform: translateY(-1px);
+}
+
+.markedNums .num[lang='bn'] {
+  font-weight: var(--fw-semibold);
+  margin-block: -0.32em -0.36em;
+}
+
+.markedNums .num[lang='en'] {
+  font-weight: var(--fw-semibold);
+  font-size: 1.15em;
+  line-height: 1.2;
+}
+
+.latin {
+  display: block;
+  margin-top: 0.15em;
+  font-family: var(--font-en-display);
+  font-weight: var(--fw-semibold);
+  font-size: max(10.5px, 0.66em);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--marigold-100);
+}
+
+/* the heart is centred by HeartMarker itself; nudge it so the number sits in its lobes */
+.heart {
+  z-index: 2;
+  translate: 0 4%;
+}
+
+.blank {
+  pointer-events: none;
+}

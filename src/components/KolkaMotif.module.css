@@ -1,0 +1,8 @@
+.motif {
+  display: block;
+  width: var(--km-size, 48px);
+  height: var(--km-size, 48px);
+  overflow: visible;
+  pointer-events: none;
+  flex: none;
+}

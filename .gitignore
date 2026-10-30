@@ -1,0 +1,14 @@
+node_modules/
+dist/
+dist-*/
+.vite/
+*.local
+.env
+.env.*
+!.env.example
+npm-debug.log*
+.DS_Store
+coverage/
+lighthouse-report*.html
+lighthouse-report*.json
+test-results/

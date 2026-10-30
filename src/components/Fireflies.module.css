@@ -1,0 +1,46 @@
+.layer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-decor);
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+.fly {
+  position: absolute;
+  width: var(--sz, 12px);
+  height: var(--sz, 12px);
+  animation: ff-drift var(--d, 12s) var(--ease-in-out) var(--dl, 0s) infinite alternate;
+  will-change: transform;
+}
+
+.glow {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffbe6 0 14%, rgba(248, 201, 77, 0.95) 24%, rgba(242, 169, 0, 0.38) 48%, rgba(242, 169, 0, 0) 70%);
+  animation: ff-twinkle var(--t, 3s) ease-in-out var(--dl, 0s) infinite alternate;
+  will-change: opacity;
+}
+
+.still .fly,
+.still .glow {
+  animation: none;
+}
+
+.still .glow {
+  opacity: 0.45;
+}
+
+@keyframes ff-drift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(var(--x1), var(--y1)); }
+  100% { transform: translate(var(--x2), var(--y2)); }
+}
+
+@keyframes ff-twinkle {
+  0%, 30% { opacity: 0.15; }
+  70%, 100% { opacity: 1; }
+}

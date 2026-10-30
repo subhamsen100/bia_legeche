@@ -1,0 +1,102 @@
+/* AudioControl — round 44x44 mute/unmute button, fixed top-right, safe-area aware. */
+
+.button {
+  position: fixed;
+  top: calc(var(--safe-top) + var(--control-inset));
+  right: calc(var(--safe-right) + var(--control-inset));
+  z-index: var(--z-controls);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-size);
+  height: var(--control-size);
+  min-width: var(--control-size);
+  min-height: var(--control-size);
+  padding: 0;
+  margin: 0;
+
+  border: var(--border-gold-hairline);
+  border-radius: var(--radius-round);
+  background: rgba(var(--ivory-rgb), 0.92);
+  color: var(--maroon);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+
+  transition:
+    background-color var(--dur-fast) var(--ease-soft),
+    box-shadow var(--dur-fast) var(--ease-soft),
+    color var(--dur-fast) var(--ease-soft),
+    opacity var(--dur-base) var(--ease-soft);
+}
+
+@supports ((-webkit-backdrop-filter: blur(4px)) or (backdrop-filter: blur(4px))) {
+  .button {
+    background: rgba(var(--ivory-rgb), 0.78);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background: var(--ivory-50);
+    box-shadow: var(--shadow-glow-gold);
+  }
+}
+
+.button:active {
+  background: var(--ivory-200);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  box-shadow: var(--shadow-glow-gold);
+}
+
+/* Muted: maroon fill, ivory glyph — reads clearly as the "off" state. */
+.muted {
+  background: var(--maroon);
+  color: var(--ivory);
+  border-color: var(--gold-300);
+}
+
+@media (hover: hover) {
+  .muted:hover {
+    background: var(--maroon-700);
+  }
+}
+
+.muted:active {
+  background: var(--maroon-900);
+}
+
+/* Audio could not load: still usable (state persists), just quieter visually. */
+.failed {
+  opacity: 0.6;
+}
+
+.icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+.waves {
+  transition: opacity var(--dur-base) var(--ease-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .waves {
+    transition: opacity var(--dur-fast) linear;
+  }
+}

@@ -1,0 +1,238 @@
+/* Phases: data-phase="hero" (big centred lockup) -> "compact" (lockup glides
+   up; calendar + countdown below). Desktop (>=900px wide, >=560px tall):
+   compact = two columns (lockup left, calendar right). */
+.scene {
+  --day-size: clamp(6.6rem, min(34vw, 21vh), 13rem);
+  --shankh-size: clamp(96px, min(28vw, 17vh), 160px);
+  --bloom-scale: 1.75;
+  gap: clamp(0.5rem, 1.6vh, 1.2rem);
+  padding-top: calc(var(--safe-top) + 60px);
+  padding-bottom: calc(var(--safe-bottom) + 28px);
+}
+
+.halo {
+  top: 42%;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.3rem, 1.4vh, 1rem);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.2rem, 1vh, 0.8rem);
+  min-width: 0;
+}
+
+.shankh {
+  width: var(--shankh-size);
+  flex: none;
+}
+
+.dayWrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  perspective: 700px;
+  flex: none;
+  min-width: calc(var(--day-size) * 1.05);
+  /* keep the bloom ring clear of the conch and the weekday line */
+  margin-block: calc(var(--day-size) * (var(--bloom-scale) * 0.46 - 0.52));
+}
+
+.scene[data-phase='compact'] .dayWrap {
+  margin-block: 0;
+}
+
+.bloom {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--day-size) * var(--bloom-scale));
+  height: calc(var(--day-size) * var(--bloom-scale));
+  margin: calc(var(--day-size) * var(--bloom-scale) / -2) 0 0 calc(var(--day-size) * var(--bloom-scale) / -2);
+  max-width: none;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bloomSpin > g {
+  transform-origin: 0 0;
+  animation: sd-spin 80s linear infinite;
+}
+
+@keyframes sd-spin {
+  to { transform: rotate(360deg); }
+}
+
+.day {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: var(--day-size);
+  font-weight: var(--fw-semibold);
+  color: var(--maroon);
+  transform-origin: 50% 0%;
+  text-shadow: 0 2px 0 rgba(255, 252, 246, 0.9), 0 10px 26px rgba(var(--maroon-rgb), 0.18);
+  font-variant-numeric: lining-nums;
+}
+
+.day[lang='bn'] {
+  font-family: var(--font-bn-serif);
+  line-height: var(--lh-bn);
+  margin-block: -0.42em -0.36em;
+}
+
+.day[lang='en'] {
+  font-family: var(--font-en-display);
+  line-height: 1.05;
+  margin-block: -0.04em -0.08em;
+}
+
+.meta {
+  min-width: 0;
+}
+
+.metaText {
+  font-size: var(--fs-lg);
+  color: var(--maroon);
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+}
+
+.metaText:global([data-lang-mode='both']) :global([lang='en']) {
+  --bt-en-scale: 0.8;
+  margin-top: 0;
+  letter-spacing: 0.03em;
+}
+
+.tagline {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.taglineText {
+  font-size: var(--fs-md);
+  color: var(--maroon-700);
+}
+
+.taglineText :global([lang='en']) {
+  font-style: italic;
+}
+
+.taglineText:global([data-lang-mode='both']) :global([lang='en']) {
+  --bt-en-scale: 0.86;
+  margin-top: 0;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.5rem, 1.6vh, 1.1rem);
+  width: 100%;
+  min-width: 0;
+}
+
+.calendar {
+  --cal-max: 22.5rem;
+}
+
+.countdown {
+  max-width: 100%;
+}
+
+/* ---------- compact (mobile / narrow): lockup becomes one row at the top ---------- */
+.scene[data-phase='compact'] {
+  /* a little lower than the other scenes: keeps the header row clear of the
+     top-right garland pendant */
+  padding-top: calc(var(--safe-top) + 80px);
+  --day-size: clamp(3.3rem, min(15vw, 9.6vh), 5.2rem);
+  --shankh-size: clamp(48px, min(13vw, 8vh), 74px);
+  --bloom-scale: 1.6;
+  justify-content: center;
+}
+
+.scene[data-phase='compact'] .lockup {
+  flex-direction: row;
+  gap: clamp(0.5rem, 2.6vw, 1rem);
+}
+
+.scene[data-phase='compact'] .top {
+  gap: clamp(0.1rem, 0.6vh, 0.5rem);
+}
+
+.scene[data-phase='compact'] .meta {
+  text-align: left;
+}
+
+.scene[data-phase='compact'] .metaText {
+  font-size: clamp(0.92rem, 0.86rem + 0.4vw, 1.2rem);
+  white-space: normal;
+}
+
+.scene[data-phase='compact'] .taglineText {
+  font-size: var(--fs-base);
+}
+
+/* ---------- desktop compact: two columns ---------- */
+@media (min-width: 900px) and (min-height: 560px) {
+  .scene {
+    --day-size: clamp(8rem, min(14vw, 23vh), 13rem);
+  }
+
+  .scene[data-phase='compact'] {
+    --day-size: clamp(6rem, min(10vw, 17vh), 10rem);
+    --shankh-size: clamp(90px, 11vh, 120px);
+    --bloom-scale: 1.5;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2rem, 6vw, 6.5rem);
+  }
+
+  .scene[data-phase='compact'] .dayWrap {
+    margin-block: calc(var(--day-size) * 0.2);
+  }
+
+  .scene[data-phase='compact'] .lockup {
+    flex-direction: column;
+    gap: clamp(0.8rem, 2.4vh, 1.6rem);
+  }
+
+  .scene[data-phase='compact'] .meta {
+    text-align: center;
+  }
+
+  .scene[data-phase='compact'] .metaText {
+    font-size: var(--fs-lg);
+    white-space: nowrap;
+  }
+
+  .scene[data-phase='compact'] .top {
+    flex: 0 1 26rem;
+    gap: clamp(0.4rem, 1.6vh, 1rem);
+  }
+
+  .scene[data-phase='compact'] .bottom {
+    flex: 0 1 28rem;
+    width: auto;
+  }
+
+  .calendar {
+    --cal-max: 29rem;
+    --cal-cell-h: clamp(44px, 6vh, 56px);
+  }
+
+  .scene[data-phase='compact'] .taglineText {
+    font-size: var(--fs-md);
+  }
+}

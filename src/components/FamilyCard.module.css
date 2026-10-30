@@ -1,0 +1,108 @@
+.card {
+  --arch-w: clamp(150px, 20vw, 260px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.5rem, 1.6vh, 1.1rem);
+  min-width: 0;
+  text-align: center;
+}
+
+.arch {
+  flex: none;
+  width: var(--arch-w);
+}
+
+.placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.name {
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-lg);
+  color: var(--maroon);
+  line-height: 1.3;
+}
+
+.nameText {
+  display: block;
+}
+
+.nameText:global([data-lang-mode='both']) :global([lang='en']) {
+  --bt-en-scale: 0.8;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.02em;
+  margin-top: 0;
+}
+
+.tick {
+  display: block;
+  width: 2.6rem;
+  height: 1px;
+  margin: 0.35rem 0 0.45rem;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.line {
+  --bt-en-scale: 0.92;
+  font-size: var(--fs-base);
+  color: var(--maroon-700);
+  max-width: 22rem;
+}
+
+.line:global([data-lang-mode='both']) :global([lang='en']) {
+  margin-top: 0.1em;
+}
+
+/* ---------- row layouts (small screens): portrait beside the text ---------- */
+.row,
+.rowReverse {
+  --arch-w: clamp(112px, min(36vw, 22vh), 170px);
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(0.75rem, 4vw, 1.4rem);
+  text-align: left;
+  width: 100%;
+}
+
+.rowReverse {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.row .text {
+  align-items: flex-start;
+  flex: 1 1 0;
+}
+
+.rowReverse .text {
+  align-items: flex-end;
+  flex: 1 1 0;
+}
+
+.row .tick {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.rowReverse .tick {
+  background: linear-gradient(270deg, var(--gold), transparent);
+}
+
+.row .name,
+.rowReverse .name {
+  font-size: var(--fs-md);
+}
+
+.row .line,
+.rowReverse .line {
+  font-size: var(--fs-sm);
+}

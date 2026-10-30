@@ -1,0 +1,55 @@
+.layer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-decor);
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.glyph {
+  display: block;
+  width: var(--size, 18px);
+  height: var(--size, 18px);
+  overflow: visible;
+}
+
+/* Tall, thin column: translateY(100%) == full layer height + margins, so the
+   same keyframes work for the viewport and for any containing box. */
+.fall {
+  position: absolute;
+  top: -48px;
+  height: calc(100% + 96px);
+  width: var(--size, 18px);
+  opacity: var(--o, 1);
+  animation: pt-fall var(--fall, 14s) linear var(--delay, 0s) infinite both;
+  will-change: transform;
+}
+
+.sway {
+  display: block;
+  animation: pt-sway var(--sway, 2.4s) ease-in-out calc(var(--delay, 0s) * -1) infinite alternate;
+  will-change: transform;
+}
+
+.still {
+  position: absolute;
+  opacity: 0.55;
+}
+
+@keyframes pt-fall {
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
+}
+
+@keyframes pt-sway {
+  from { transform: translateX(calc(var(--sx, 20px) * -1)) rotate(var(--r0, 0deg)) rotateY(0deg); }
+  to { transform: translateX(var(--sx, 20px)) rotate(var(--r1, 180deg)) rotateY(var(--ry, 40deg)); }
+}

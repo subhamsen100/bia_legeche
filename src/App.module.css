@@ -1,0 +1,23 @@
+.main {
+  position: relative;
+  z-index: var(--z-stage);
+  min-height: 100dvh;
+}
+
+.languageToggle {
+  position: fixed;
+  top: calc(var(--safe-top, 0px) + 12px);
+  left: calc(var(--safe-left, 0px) + 12px);
+  z-index: var(--z-controls);
+}
+
+.gateLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Exiting gate must not swallow taps meant for the stage. */
+.gateLayer:not(:only-child) {
+  pointer-events: none;
+}

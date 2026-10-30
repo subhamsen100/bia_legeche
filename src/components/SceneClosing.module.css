@@ -1,0 +1,65 @@
+.scene {
+  --closing-heart: clamp(54px, min(15vw, 10vh), 84px);
+  --scene-gutter: clamp(24px, 8vw, 64px);
+  gap: clamp(0.8rem, 3vh, 2rem);
+}
+
+.heart {
+  line-height: 0;
+  filter: drop-shadow(0 4px 10px rgba(var(--marigold-rgb), 0.35));
+}
+
+.blessing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.4rem, 1.6vh, 1rem);
+  max-width: 34rem;
+  font-weight: inherit;
+  text-wrap: balance;
+}
+
+.bn {
+  display: block;
+  font-family: var(--font-bn-serif);
+  font-weight: var(--fw-semibold);
+  font-size: clamp(1.45rem, 1.2rem + 1.4vw, 2.5rem);
+  line-height: var(--lh-bn);
+  color: var(--maroon);
+}
+
+.en {
+  display: block;
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-weight: var(--fw-medium);
+  font-size: clamp(1.35rem, 1.15rem + 1.2vw, 2.3rem);
+  line-height: 1.35;
+  color: var(--maroon-700);
+}
+
+.scene[data-lang-mode='en'] .en {
+  font-size: clamp(1.7rem, 1.4rem + 1.6vw, 2.9rem);
+  font-style: normal;
+  font-weight: var(--fw-semibold);
+  color: var(--maroon);
+}
+
+.rule {
+  width: min(12rem, 52%);
+}
+
+.signed {
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.8rem);
+  color: var(--maroon);
+}
+
+.signed :global([lang='en']) {
+  font-size: 1.5em;
+  line-height: 1.25;
+}
+
+.signed:global([data-lang-mode='both']) :global([lang='en']) {
+  --bt-en-scale: 1.35;
+  color: var(--maroon-700);
+}

@@ -1,0 +1,18 @@
+.vine {
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+  flex: none;
+}
+
+.h {
+  width: min(100%, 180px);
+  aspect-ratio: 4 / 1;
+  height: auto;
+}
+
+.v {
+  width: 30px;
+  aspect-ratio: 1 / 4;
+  height: auto;
+}

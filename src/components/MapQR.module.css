@@ -1,0 +1,98 @@
+/* MapQR — ivory card, gold hairline (double rule), gold corner ornaments in the padding.
+   Gold never touches the QR plate: ornaments end inside the card padding, before the quiet zone. */
+
+.card {
+  /* Override from the consumer if needed; the max() keeps the spec minimums (160 / 220). */
+  --map-qr-size: 172px;
+  --map-qr-pad: 24px;          /* >= ornament inset + size, so ornaments stay outside the quiet zone */
+  --map-qr-ornament: 18px;
+  --map-qr-ornament-inset: 5px;
+
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  max-width: 100%;
+  margin: 0;
+  padding: var(--map-qr-pad) var(--map-qr-pad) calc(var(--map-qr-pad) - 4px);
+  background: var(--ivory);
+  border: var(--border-gold-hairline);
+  border-radius: var(--radius-md);
+  box-shadow:
+    inset 0 0 0 3px var(--ivory),
+    inset 0 0 0 4px rgba(var(--gold-rgb), 0.45),
+    var(--shadow-md);
+  color: var(--maroon);
+}
+
+.plate {
+  width: max(160px, var(--map-qr-size));
+  aspect-ratio: 1;
+  flex: none;
+  border-radius: var(--radius-xs);
+  background: var(--ivory);
+  overflow: hidden;
+}
+
+.plate svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ornament {
+  position: absolute;
+  width: var(--map-qr-ornament);
+  height: var(--map-qr-ornament);
+  color: var(--gold);
+  pointer-events: none;
+}
+
+.tl {
+  top: var(--map-qr-ornament-inset);
+  left: var(--map-qr-ornament-inset);
+}
+
+.tr {
+  top: var(--map-qr-ornament-inset);
+  right: var(--map-qr-ornament-inset);
+  transform: scaleX(-1);
+}
+
+.bl {
+  bottom: var(--map-qr-ornament-inset);
+  left: var(--map-qr-ornament-inset);
+  transform: scaleY(-1);
+}
+
+.br {
+  bottom: var(--map-qr-ornament-inset);
+  right: var(--map-qr-ornament-inset);
+  transform: scale(-1, -1);
+}
+
+.caption {
+  max-width: max(160px, var(--map-qr-size));
+  text-align: center;
+  color: var(--maroon);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-bn);
+}
+
+@media (min-width: 768px) {
+  .card {
+    --map-qr-size: 220px;
+    --map-qr-pad: 28px;
+    --map-qr-ornament: 20px;
+    --map-qr-ornament-inset: 6px;
+  }
+
+  .plate {
+    width: max(220px, var(--map-qr-size));
+  }
+
+  .caption {
+    max-width: max(220px, var(--map-qr-size));
+  }
+}

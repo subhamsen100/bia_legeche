@@ -1,0 +1,81 @@
+.root {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 260 / 190;
+  margin-inline: auto;
+  pointer-events: none;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* pin tip sits on the door step (172,148 of 260x190) */
+.marker {
+  position: absolute;
+  left: calc(172 / 260 * 100%);
+  top: calc(148 / 190 * 100%);
+  width: 9%;
+  aspect-ratio: 24 / 32;
+  margin-left: -4.5%;
+  transform-origin: 50% 100%;
+  translate: 0 -100%;
+}
+
+.bounce {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+}
+
+.bounce svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.live .bounce {
+  animation: lh-bounce 1.3s var(--ease-in-out) 3s infinite;
+  will-change: transform;
+}
+
+.live .flicker {
+  animation: lh-flicker 2.8s ease-in-out infinite alternate;
+}
+
+.live .bulbA {
+  animation: lh-twinkle 1.6s ease-in-out infinite alternate;
+}
+
+.live .bulbB {
+  animation: lh-twinkle 1.6s ease-in-out -0.8s infinite alternate;
+}
+
+.live .star {
+  animation: lh-twinkle 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes lh-bounce {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  8% { transform: translateY(0) scale(1.08, 0.9); }
+  40% { transform: translateY(-34%) scale(0.96, 1.04); }
+  70% { transform: translateY(0) scale(1.05, 0.94); }
+  82% { transform: translateY(0) scale(1); }
+}
+
+@keyframes lh-flicker {
+  0%, 40% { opacity: 1; }
+  55% { opacity: 0.78; }
+  70%, 100% { opacity: 0.95; }
+}
+
+@keyframes lh-twinkle {
+  from { opacity: 0.35; }
+  to { opacity: 1; }
+}

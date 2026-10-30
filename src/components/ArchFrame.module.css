@@ -1,0 +1,41 @@
+.root {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+}
+
+/* arch window: matches ARCH_INNER (x 24..276, top 36, bottom 378 of 300x400) */
+.window {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 9%;
+  bottom: 5.5%;
+  border-radius: 999px 999px 3px 3px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 35%, var(--marigold-100), var(--ivory-200) 70%);
+  box-shadow: inset 0 0 18px rgba(var(--maroon-rgb), 0.18);
+  isolation: isolate;
+  display: grid;
+}
+
+.window > * {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.window > img {
+  object-fit: cover;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}

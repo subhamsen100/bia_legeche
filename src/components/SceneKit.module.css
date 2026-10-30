@@ -1,0 +1,79 @@
+/* ---------- GoldRule ---------- */
+.rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: min(15rem, 62%);
+  margin-inline: auto;
+  pointer-events: none;
+}
+
+.ruleLine {
+  flex: 1 1 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--gold-rgb), 0.95));
+  transform-origin: 100% 50%;
+}
+
+.ruleLineR {
+  background: linear-gradient(270deg, transparent, rgba(var(--gold-rgb), 0.95));
+  transform-origin: 0% 50%;
+}
+
+.ruleBead {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  rotate: 45deg;
+  background: var(--marigold);
+  box-shadow: 0 0 0 2px var(--ivory-50), 0 0 0 3px rgba(var(--gold-rgb), 0.8);
+}
+
+/* ---------- LetterReveal ---------- */
+.letters {
+  --letter-color: currentColor;
+  --letter-gold: #C98A00;
+  display: inline;
+}
+
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.letter {
+  display: inline-block;
+  color: var(--letter-color);
+  animation: kit-glint-in 1.6s ease-out var(--in-delay, 0s) both;
+  will-change: transform, opacity;
+}
+
+.letter[data-glint] {
+  animation:
+    kit-glint-in 1.6s ease-out var(--in-delay, 0s) both,
+    kit-glint 1.2s ease-in-out var(--glint-delay, 0s) 1;
+}
+
+@keyframes kit-glint-in {
+  0% {
+    color: var(--letter-gold);
+    text-shadow: 0 0 0.35em rgba(var(--marigold-rgb), 0.85);
+  }
+  100% {
+    color: var(--letter-color);
+    text-shadow: 0 0 0.25em rgba(var(--marigold-rgb), 0);
+  }
+}
+
+@keyframes kit-glint {
+  0%,
+  100% {
+    color: var(--letter-color);
+    text-shadow: 0 0 0.25em rgba(var(--marigold-rgb), 0);
+  }
+  45% {
+    color: var(--letter-gold);
+    text-shadow: 0 0 0.3em rgba(var(--marigold-rgb), 0.75);
+  }
+}

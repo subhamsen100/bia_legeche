@@ -1,0 +1,70 @@
+.scene {
+  --names-heart: clamp(58px, min(17vw, 11vh), 104px);
+  gap: clamp(1rem, 3.5vh, 2.4rem);
+}
+
+.names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.1rem, 1vh, 0.6rem);
+  max-width: 100%;
+  font-weight: inherit;
+  color: var(--maroon);
+}
+
+.bnLine {
+  display: block;
+  font-family: var(--font-bn-serif);
+  font-weight: var(--fw-semibold);
+  font-size: clamp(2.3rem, min(10.5vw, 8.4vh), 5.6rem);
+  line-height: var(--lh-bn);
+  color: var(--maroon);
+  text-wrap: balance;
+}
+
+.bnLine [lang] {
+  line-height: var(--lh-bn);
+}
+
+.enLine {
+  display: block;
+  font-family: var(--font-en-script);
+  font-weight: 400;
+  font-size: clamp(2.5rem, min(11.5vw, 9vh), 6.2rem);
+  line-height: 1.3;
+  color: var(--maroon-700);
+  text-wrap: balance;
+}
+
+.enLine [lang] {
+  font-family: var(--font-en-script);
+  line-height: 1.3;
+}
+
+/* only English: script names take the lead size */
+.names[data-lang-mode='en'] .enLine {
+  font-size: clamp(3rem, min(14vw, 11vh), 7rem);
+}
+
+.heart {
+  display: block;
+  line-height: 0;
+  filter: drop-shadow(0 4px 10px rgba(var(--marigold-rgb), 0.35));
+}
+
+.names[data-lang-mode='en'] .heart {
+  order: 2;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+}
+
+.event {
+  font-size: var(--fs-base);
+}

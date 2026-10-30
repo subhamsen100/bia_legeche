@@ -1,0 +1,56 @@
+.scene {
+  gap: clamp(0.4rem, 2vh, 1.6rem);
+}
+
+.head {
+  flex: none;
+}
+
+.kicker {
+  font-size: var(--fs-base);
+}
+
+.pair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.1rem, 1vh, 0.6rem);
+  width: 100%;
+  max-width: 30rem;
+}
+
+.vine {
+  display: flex;
+  justify-content: center;
+  width: clamp(110px, 34vw, 150px);
+  height: clamp(26px, 4.5vh, 38px);
+}
+
+.vine > svg {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* desktop / tablet: groom left, bride right, vine joining the arches */
+.pair[data-wide='true'] {
+  --arch-w: clamp(170px, min(19vw, 34vh), 290px);
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 2rem);
+  max-width: 64rem;
+}
+
+.pair[data-wide='true'] .card {
+  --arch-w: inherit;
+  flex: 0 1 22rem;
+}
+
+.pair[data-wide='true'] .vine {
+  flex: none;
+  width: clamp(110px, 12vw, 180px);
+  height: auto;
+  aspect-ratio: 4 / 1;
+  margin-top: calc(var(--arch-w) * 4 / 3 * 0.52);
+}

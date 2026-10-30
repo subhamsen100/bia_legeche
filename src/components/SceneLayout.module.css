@@ -1,0 +1,65 @@
+/* Shared layout for the timed scenes (each scene root fills the stage layer).
+   Reserved chrome: language toggle / audio button (top ~64px), progress vine
+   (bottom ~28px), floral corners (keep text away from the extreme corners). */
+.scene {
+  --scene-top: calc(var(--safe-top) + 64px);
+  --scene-bottom: calc(var(--safe-bottom) + 30px);
+  --scene-gutter: clamp(16px, 4.5vw, 48px);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--scene-top) var(--scene-gutter) var(--scene-bottom);
+  overflow: hidden;
+  text-align: center;
+  color: var(--color-text);
+}
+
+/* soft marigold halo behind the focal element */
+.halo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(120vw, 86vh, 900px);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--marigold-rgb), 0.16) 0%,
+    rgba(var(--marigold-rgb), 0.07) 35%,
+    rgba(var(--ivory-rgb), 0) 68%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* small label above headings: English gets tracking, Bengali never does */
+.kicker {
+  --bt-en-scale: 0.92;
+  font-size: var(--fs-sm);
+  color: var(--maroon-700);
+  font-weight: var(--fw-medium);
+}
+
+.kicker :global([lang='en']) {
+  letter-spacing: 0.16em;
+  font-weight: var(--fw-semibold);
+  font-variant-caps: all-small-caps;
+  font-size: 1.12em;
+}
+
+.kicker[data-lang-mode='both'] :global([lang='en']) {
+  font-size: calc(1.12em * var(--bt-en-scale));
+  margin-top: 0;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+}

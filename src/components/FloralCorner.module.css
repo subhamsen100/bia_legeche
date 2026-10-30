@@ -1,0 +1,66 @@
+.corner {
+  --corner-size: clamp(118px, 30vw, 300px);
+  position: fixed;
+  z-index: var(--z-decor);
+  width: var(--corner-size);
+  height: var(--corner-size);
+  pointer-events: none;
+  contain: layout style;
+}
+
+.tl { top: -4px; left: -4px; }
+.tr { top: -4px; right: -4px; }
+.bl { bottom: -4px; left: -4px; }
+.br { bottom: -4px; right: -4px; }
+
+.mirror,
+.sway {
+  position: absolute;
+  inset: 0;
+}
+
+.tr .mirror { transform: scaleX(-1); }
+.bl .mirror { transform: scaleY(-1); }
+.br .mirror { transform: scale(-1, -1); }
+
+.sway { transform-origin: 0 0; }
+
+.sway.animate {
+  animation: fc-sway 7.5s var(--ease-in-out) infinite alternate;
+  will-change: transform;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.pendant {
+  position: absolute;
+  left: 40.4%;
+  top: 44.6%;
+  width: 11.54%;
+  aspect-ratio: 30 / 110;
+  transform-origin: 50% 0;
+}
+
+.pendant.animate {
+  animation: fc-swing 4.6s var(--ease-in-out) infinite alternate;
+  will-change: transform;
+}
+
+.tr .sway.animate,
+.bl .sway.animate { animation-delay: -2.4s; }
+.br .sway.animate { animation-delay: -4.1s; }
+
+@keyframes fc-sway {
+  from { transform: rotate(-1.4deg); }
+  to { transform: rotate(1.6deg); }
+}
+
+@keyframes fc-swing {
+  from { transform: rotate(5deg); }
+  to { transform: rotate(-5deg); }
+}

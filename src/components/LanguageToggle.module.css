@@ -1,0 +1,66 @@
+.toggle {
+  display: inline-flex;
+  align-items: stretch;
+  padding: 3px;
+  gap: 0;
+  border: var(--border-gold-hairline);
+  border-radius: var(--radius-pill);
+  background: rgba(var(--ivory-rgb), 0.92);
+  box-shadow: var(--shadow-sm);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.option {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  min-width: 44px;
+  padding: 0 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  line-height: 1;
+  color: var(--maroon-700);
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-fast) var(--ease-soft),
+    color var(--dur-fast) var(--ease-soft);
+}
+
+/* gold hairline divider between segments ("বাংলা | English | Both") */
+.option + .option::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 25%;
+  bottom: 25%;
+  width: 1px;
+  background: rgba(var(--gold-rgb), 0.7);
+}
+
+.option[aria-checked='true']::before,
+.option[aria-checked='true'] + .option::before {
+  opacity: 0;
+}
+
+.option[lang='en'] {
+  font-family: var(--font-en-display);
+  font-weight: var(--fw-semibold);
+  font-size: calc(var(--fs-sm) * 1.08);
+}
+
+.option[lang='bn'] {
+  font-family: var(--font-bn-sans);
+  line-height: var(--lh-bn);
+}
+
+.option:hover {
+  background: rgba(var(--gold-rgb), 0.16);
+}
+
+.option[aria-checked='true'] {
+  background: var(--maroon);
+  color: var(--ivory);
+}

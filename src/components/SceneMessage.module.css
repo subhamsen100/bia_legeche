@@ -1,0 +1,82 @@
+.scene {
+  gap: clamp(0.8rem, 3vh, 2rem);
+  --scene-gutter: clamp(22px, 7vw, 64px);
+}
+
+.orn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.ornL {
+  transform: scaleX(-1);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.8rem, 2.6vh, 1.8rem);
+  width: 100%;
+  max-width: 46rem;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.2rem, 1vh, 0.7rem);
+  text-wrap: balance;
+}
+
+.line {
+  display: block;
+}
+
+.bn {
+  font-family: var(--font-bn-serif);
+  font-size: clamp(1rem, 0.86rem + 0.7vw, 1.6rem);
+  line-height: var(--lh-bn);
+  color: var(--maroon-900);
+}
+
+.bn .lead {
+  font-size: 1.22em;
+  font-weight: var(--fw-semibold);
+  color: var(--maroon);
+}
+
+.en {
+  font-family: var(--font-en-display);
+  font-size: clamp(1.08rem, 0.94rem + 0.75vw, 1.75rem);
+  line-height: 1.4;
+  color: var(--maroon-700);
+}
+
+.en .lead {
+  font-size: 1.22em;
+  font-style: italic;
+  font-weight: var(--fw-semibold);
+  color: var(--maroon);
+}
+
+/* Both mode: English is the quieter echo of the Bengali */
+.scene[data-lang-mode='both'] .en {
+  font-size: clamp(1rem, 0.88rem + 0.62vw, 1.55rem);
+  color: var(--maroon-300);
+}
+
+.scene[data-lang-mode='both'] .en .lead {
+  color: var(--maroon-700);
+}
+
+/* single language: a little more presence */
+.scene[data-lang-mode='bn'] .bn,
+.scene[data-lang-mode='en'] .en {
+  font-size: clamp(1.1rem, 1rem + 0.7vw, 1.6rem);
+  gap: clamp(0.5rem, 2vh, 1.2rem);
+}
+
+.rule {
+  width: min(11rem, 50%);
+}

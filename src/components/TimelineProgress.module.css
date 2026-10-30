@@ -1,0 +1,112 @@
+/* Growing-vine progress bar pinned to the bottom edge (safe-area aware). */
+.root {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-controls);
+  padding: 0 calc(14px + var(--safe-right)) calc(4px + var(--safe-bottom)) calc(14px + var(--safe-left));
+  pointer-events: auto;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.guide {
+  fill: none;
+  stroke: rgba(var(--gold-rgb), 0.35);
+  stroke-width: 1;
+  stroke-dasharray: 1 5;
+  stroke-linecap: round;
+}
+
+.grown {
+  position: absolute;
+  inset: 0;
+  will-change: clip-path;
+}
+
+.stemShadow {
+  fill: none;
+  stroke: rgba(var(--gold-rgb), 0.45);
+  stroke-width: 5.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stem {
+  fill: none;
+  stroke: var(--leaf);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Leaf/blossom slots are zero-size anchors on the stem line. */
+.leafSlot,
+.blossomSlot {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.leaf {
+  position: absolute;
+  left: 0;
+  top: -4px; /* leaf base sits on the stem */
+  display: block;
+  width: 14px;
+  height: 8px;
+}
+
+.blossom {
+  position: absolute;
+  left: -5.5px;
+  top: -5.5px;
+  display: block;
+  width: 11px;
+  height: 11px;
+  filter: drop-shadow(0 0 2px rgba(var(--marigold-rgb), 0.45));
+}
+
+.tipRail {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.tip {
+  position: absolute;
+  right: 0;
+  width: 0;
+  height: 0;
+}
+
+.leaf svg,
+.blossom svg,
+.tip svg {
+  overflow: visible;
+  max-width: none; /* global svg{max-width:100%} would collapse it inside 0-width anchors */
+}
+
+.tip svg {
+  position: absolute;
+  left: -4px;
+  top: -7px;
+  overflow: visible;
+  transform: rotate(72deg);
+  transform-origin: 50% 50%;
+  filter: drop-shadow(0 0 3px rgba(var(--marigold-rgb), 0.55));
+}

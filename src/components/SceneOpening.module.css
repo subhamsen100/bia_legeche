@@ -1,0 +1,28 @@
+.scene {
+  --gate-lotus: min(54vw, 40vh, 300px);
+  /* match the gate's padding so the lotus does not jump at the hand-over */
+  padding-bottom: calc(var(--safe-bottom) + 32px);
+  padding-inline: 20px;
+}
+
+.lotus {
+  transform-origin: 50% 60%;
+}
+
+.rule {
+  width: min(13rem, 56%);
+}
+
+.trio {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.kolka {
+  display: block;
+}
+
+.flip {
+  transform: scaleX(-1);
+}

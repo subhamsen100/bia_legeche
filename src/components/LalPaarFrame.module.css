@@ -1,0 +1,55 @@
+/* red saree border with woven gold buti dots */
+.frame {
+  position: relative;
+  padding: 9px;
+  border-radius: var(--radius-lg);
+  background-color: var(--maroon);
+  background-image: radial-gradient(circle, rgba(224, 199, 138, 0.75) 0 1px, transparent 1.6px);
+  background-size: 9px 9px;
+  background-position: 0 0;
+  box-shadow: var(--shadow-md);
+  min-width: 0;
+}
+
+.zari {
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--gold-300);
+  border-radius: calc(var(--radius-lg) - 3px);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  background: var(--ivory-50);
+  border-radius: calc(var(--radius-lg) - 8px);
+  box-shadow: 0 0 0 1px var(--gold), inset 0 0 22px rgba(var(--gold-rgb), 0.16);
+  min-width: 0;
+}
+
+.hairline {
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(var(--gold-rgb), 0.7);
+  border-radius: calc(var(--radius-lg) - 13px);
+  pointer-events: none;
+}
+
+.corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.tl { top: 10px; left: 10px; transform: rotate(90deg); }
+.tr { top: 10px; right: 10px; transform: scaleX(-1) rotate(90deg); }
+.bl { bottom: 10px; left: 10px; transform: scaleY(-1) rotate(90deg); }
+.br { bottom: 10px; right: 10px; transform: scale(-1, -1) rotate(90deg); }
+
+.content {
+  position: relative;
+  padding: clamp(1.6rem, 1.2rem + 1.6vw, 2.5rem) clamp(1.4rem, 1rem + 1.6vw, 2.5rem);
+  min-width: 0;
+}

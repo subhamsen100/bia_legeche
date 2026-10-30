@@ -1,0 +1,31 @@
+/* Full-viewport stage; scenes stack as absolutely positioned layers so the
+   outgoing and incoming scene overlap during the crossfade. */
+.stage {
+  position: relative;
+  z-index: var(--z-stage);
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  touch-action: manipulation; /* no double-tap zoom delay on taps */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stage:focus {
+  outline: none;
+}
+
+.stage:focus-visible {
+  outline: none;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 2px rgba(var(--marigold-rgb), 0.55);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: opacity, transform;
+}

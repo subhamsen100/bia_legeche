@@ -1,0 +1,29 @@
+.root {
+  pointer-events: none;
+  --alpona-ground: var(--maroon);
+  --alpona-ink: var(--ivory);
+  --alpona-gold: var(--gold-300);
+}
+
+.isStrip {
+  width: 100%;
+  height: 20px;
+}
+
+.strip {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.isRing {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 1;
+}
+
+.ring {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

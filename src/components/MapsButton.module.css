@@ -1,0 +1,68 @@
+/* MapsButton — maroon pill with a gold hairline and a marigold map pin. */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  min-height: 48px;
+  min-width: var(--control-size);
+  max-width: 100%;
+  padding: var(--space-xs) var(--space-lg) var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--maroon-500) 0%, var(--maroon-700) 100%);
+  color: var(--ivory);
+  font-family: var(--font-mixed);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-bn);
+  text-align: center;
+  text-decoration: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--gold-rgb), 0.75),
+    inset 0 0 0 3px var(--maroon-700),
+    inset 0 0 0 4px rgba(var(--gold-rgb), 0.3),
+    var(--shadow-md);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow var(--dur-base) var(--ease-soft), filter var(--dur-base) var(--ease-soft);
+}
+
+.button:hover {
+  filter: brightness(1.08);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--gold-rgb), 0.95),
+    inset 0 0 0 3px var(--maroon-700),
+    inset 0 0 0 4px rgba(var(--gold-rgb), 0.4),
+    var(--shadow-lg);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.icon {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--marigold);
+  filter: drop-shadow(0 1px 1px rgba(var(--maroon-rgb), 0.6));
+}
+
+.iconDot {
+  fill: var(--maroon-700);
+}
+
+.label {
+  display: inline-block;
+  min-width: 0;
+  /* Nested BilingualText (both mode) inside the pill: keep the English line readable on maroon. */
+  --bt-en-color: var(--ivory-200);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

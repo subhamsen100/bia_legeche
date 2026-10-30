@@ -1,0 +1,172 @@
+/* ==========================================================================
+   Global base styles (reset + typography rules + utilities)
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100%;
+  min-height: 100dvh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-mixed);
+  font-size: var(--fs-base);
+  line-height: var(--lh-bn); /* safe default: unmarked text may be Bengali */
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100%;
+  min-height: 100dvh;
+  isolation: isolate;
+}
+
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+  color: var(--color-heading);
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+
+/* ---------- Language typography ----------
+   Font + line-height are set on elements carrying an explicit lang attribute and
+   then INHERIT, so component classes on parents/children still work.
+   Bengali spec: line-height >= 1.7, no letter-spacing, no text-transform. */
+[lang|='bn'] {
+  font-family: var(--font-bn-sans);
+  line-height: var(--lh-bn);
+}
+
+[lang|='en'] {
+  font-family: var(--font-en-display);
+  line-height: var(--lh-en);
+}
+
+/* Guards applied to every element in a Bengali context */
+:lang(bn) {
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* ---------- Focus ---------- */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+  box-shadow: 0 0 0 5px rgba(var(--marigold-rgb), 0.25);
+}
+
+/* ---------- Utilities ---------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+::selection {
+  background: rgba(var(--marigold-rgb), 0.35);
+  color: var(--maroon-900);
+}
+
+/* ---------- Reduced-motion safety net ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
